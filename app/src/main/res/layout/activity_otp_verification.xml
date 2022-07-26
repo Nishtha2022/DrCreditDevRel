@@ -237,15 +237,35 @@
                 android:textFontWeight="400"
                 android:textColor="#354849"/>
 
-            <TextView
-                android:fontFamily="@font/inter_semibold"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/timer"
-                android:textColor="#354849"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="12dp"
-                android:textStyle="bold"/>
+                >
+
+                <TextView
+                    android:visibility="gone"
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/resendOtp"
+                    android:text="Resend OTP"
+                    android:textColor="#229381"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"/>
+                <TextView
+
+                    android:fontFamily="@font/inter_semibold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/timer"
+                    android:textColor="#354849"
+                    android:visibility="visible"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"/>
+            </FrameLayout>
+
 
 
         </LinearLayout>

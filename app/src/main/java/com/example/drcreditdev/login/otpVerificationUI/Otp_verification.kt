@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
@@ -12,9 +11,11 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.drcreditdev.R
 import com.example.drcreditdev.creditCardUI.refreshPageUI.RefreshPage
@@ -58,6 +59,19 @@ class Otp_verification : AppCompatActivity() {
             startActivity(intent)
             finish()
         })
+        binding.resendOtp.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+                binding.resendOtp.visibility = View.GONE
+                binding.timer.visibility = View.VISIBLE
+
+                viewModel.callRepo(str)
+                startTimeCounter(Otp_verification())
+
+            }
+        })
+
+
 
         binding.editText1!!.setOnKeyListener(GenricKeyEvent(binding.editText1!!, null))
         binding.editText2!!.setOnKeyListener(GenricKeyEvent(binding.editText2!!, binding.editText1))
@@ -163,7 +177,7 @@ class Otp_verification : AppCompatActivity() {
         (viewModel.resetOtp.observe(this, {
             if (it == true) {
 
-                Toast.makeText(this.applicationContext, "Invalid OTP", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(this.applicationContext, "Invalid OTP", Toast.LENGTH_SHORT).show()
                 binding.btnVerify.visibility = View.VISIBLE
                 binding.anime.visibility = View.GONE
                 binding.editText6!!.setBackgroundResource(R.drawable.user_detail_box)
@@ -305,16 +319,28 @@ class Otp_verification : AppCompatActivity() {
     }
 
     fun startTimeCounter(view: Otp_verification) {
+
         var counter = 30
         val countTime: TextView = findViewById(R.id.timer)
+        countTime.visibility= View.VISIBLE
+
+        val resendOtp: TextView = findViewById(R.id.resendOtp)
+        resendOtp.visibility = View.GONE
         object : CountDownTimer(30000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                countTime.text = "00:"+counter.toString()+" s"
+                if(counter<10)
+                {
+                    countTime.text = "00:0"+counter.toString()
+                }
+                else {
+                    countTime.text = "00:" + counter.toString()
+                }
                 counter--
             }
             override fun onFinish() {
-                countTime.text = "Resend code"
-                countTime.setTextColor(Color.parseColor("#229381"))
+                countTime.visibility = View.GONE
+                resendOtp.visibility = View.VISIBLE
+                resendOtp.setTextColor(Color.parseColor("#229381"))
 
             }
         }.start()
@@ -335,6 +361,8 @@ class Otp_verification : AppCompatActivity() {
         }
 
 
-    }}
+    }
+
+}
 
 

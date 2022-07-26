@@ -1,7 +1,9 @@
 package com.example.drcreditdev.login.otpVerificationUI
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.drcreditdev.dataModal.dataUser
+import com.example.drcreditdev.dataModal.reqGenrateOtp
 import com.example.drcreditdev.dataModal.reqVerify
 import com.example.drcreditdev.dataModal.resVerify
 import com.example.drcreditdev.services.ApiClientReqOTP
@@ -57,13 +59,14 @@ class OtpVerificationViewModel : ViewModel(){
           {
               if(result.isSuccessful)
               {
-                  resetOtp.value=false
+                  //resetOtp.value=false
+                //  setVerifyButton.value=
                   response.value = result.body()
                   authToken.value = result.body()!!.authToken
                   checkUser(result.body()!!.authToken)
 
               }
-              else
+            else
               {
                 resetOtp.value=true
               }
@@ -71,14 +74,33 @@ class OtpVerificationViewModel : ViewModel(){
 
 
           }
-          else
+         else
           {
               resetOtp.value = true
           }
 
       }
 
+
   }
+    fun callRepo(phone : String) {
+        var numberToSend = "+91"+phone
+        var modal: reqGenrateOtp = reqGenrateOtp(numberToSend, "fdsfsdfdssf", "phone")
+        val createPostApi = ApiClientReqOTP().getApiService()
+
+        viewModelScope.launch {
+            val result = createPostApi.createPost(modal)
+            if (result != null)
+            // Checking the results
+                if (result.code() == 200) {
+                    Log.d("msg: ", "Success")
+                }
+                else
+                {
+                }
+        }
+    }
+
 
     private fun checkUser(authToken: String) {
         var response: MutableLiveData<dataUser> = MutableLiveData()

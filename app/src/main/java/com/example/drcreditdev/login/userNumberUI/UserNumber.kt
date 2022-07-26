@@ -39,7 +39,7 @@ class UserNumber : AppCompatActivity() {
 
         binding.etGetNumber.addTextChangedListener(textWatcher)
         var phone = binding.etGetNumber.text.toString()
-        onCheckboxClicked(binding.checkBox)
+
 
         binding.btnBack.setOnClickListener(View.OnClickListener {
 
@@ -119,6 +119,8 @@ class UserNumber : AppCompatActivity() {
 
     }
 
+
+
     private val textWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
@@ -127,8 +129,7 @@ class UserNumber : AppCompatActivity() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
             this@UserNumber.binding.linearLayout.setBackgroundResource(R.drawable.number_bg_on_click)
-            //viewModel.proceed.postValue(true)
-            //onCheckboxClicked(binding.checkBox)
+            enableButtonVer()
 
 
         }
@@ -138,21 +139,22 @@ class UserNumber : AppCompatActivity() {
         }
     }
 
+    private fun enableButtonVer() {
+      var enableBool = binding.etGetNumber.text.toString().length == 10
+        enableBtn(enableBool)
 
+    }
 
-    fun onCheckboxClicked(view: View){
-      var phone = binding.etGetNumber.text.toString()
+    private fun enableBtn(enableBool: Boolean) {
+       if(enableBool == true)
+       {
 
-        if(checkBox.isChecked && viewModel.isValid(phone) )
-        {
-         viewModel.proceed.value = true
-        }
+        viewModel.proceed.value =true
+       }
         else
-        {
-            viewModel.proceed.value = false
-
-        }
-
+       {
+          viewModel.proceed.value = false
+       }
     }
 
 

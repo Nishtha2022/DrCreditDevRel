@@ -20,8 +20,10 @@ class Procedding_page : AppCompatActivity() {
         setContentView(databinding.root)
         viewModel = ViewModelProvider(this).get(ProceedingPageViewModel::class.java)
         databinding.viewModel = viewModel
-        getCreditScore()
+
         databinding.anime.playAnimation()
+        getCreditScore()
+
         var authToken:String? = sharedPreferences.getString("authToken","user_token")
         viewModel.authToken = authToken
 
