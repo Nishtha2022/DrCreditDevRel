@@ -1,0 +1,131 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-android-extensions'
+//    id 'com.android.databinding'
+
+
+}
+
+android {
+    compileSdk 32
+    signingConfigs {
+        release {
+            storeFile file('../release_key.jks')
+            storePassword 'acecredit'
+            keyAlias 'acekey'
+            keyPassword 'acecredit'
+        }
+    }
+    flavorDimensions "version"
+    productFlavors{
+        prod{
+            resValue "string", "app_name", "DrCredit"
+            buildConfigField "String", "BASE_URL", "\"https://api.acecredit.in/\""
+            buildConfigField "String", "BINDING_NUMER", "\"9873042778\""
+            buildConfigField "String", "APP_ID", "\"1297575a140b134012cb8dcf57757921\""
+        }
+        dev{
+            resValue "string", "app_name", "DrCredit dev"
+            applicationIdSuffix ".dev"
+            buildConfigField "String", "BASE_URL", "\"https://devapi.terrafin.tech:8090/\""
+            buildConfigField "String", "BINDING_NUMER", "\"9873042778\""
+            buildConfigField "String", "APP_ID", "\"82859b7b0bf105dc8ae5b596b95828\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    defaultConfig {
+        applicationId "com.android.drcreditdev"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+    //release {
+      //  minifyEnabled false
+        //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+   // }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        android.buildFeatures.dataBinding = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.airbnb.android:lottie:5.0.3'
+    implementation 'com.github.Triggertrap:SeekArc:v1.1'
+    //retrofit and gson convertor
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    //okhttp implementation
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+
+    //coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3")
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3'
+
+    //lifecycle-viewmodel implementations
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+   // implementation 'com.google.android.material:material:1.7.0-alpha02'
+   
+
+    //Android Navigation Architecture
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.0"
+
+    implementation 'com.xwray:groupie:2.8.1'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.8.1'
+    implementation 'com.xwray:groupie-databinding:2.3.0'
+
+    implementation "androidx.preference:preference-ktx:1.2.0"
+}
