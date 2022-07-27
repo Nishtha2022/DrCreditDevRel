@@ -61,7 +61,7 @@ class Otp_verification : AppCompatActivity() {
         })
         binding.resendOtp.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-
+                binding.tvDidnt.text = "You’ll receive an OTP within"
                 binding.resendOtp.visibility = View.GONE
                 binding.timer.visibility = View.VISIBLE
 
@@ -338,6 +338,7 @@ class Otp_verification : AppCompatActivity() {
                 counter--
             }
             override fun onFinish() {
+                binding.tvDidnt.text = "Didn’t receive an OTP?"
                 countTime.visibility = View.GONE
                 resendOtp.visibility = View.VISIBLE
                 resendOtp.setTextColor(Color.parseColor("#229381"))

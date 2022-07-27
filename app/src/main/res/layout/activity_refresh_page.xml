@@ -46,7 +46,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/we_ll_use_it_to_find_you_an_aproriate"
+                android:text="@string/we_ll_use_it_to_find_you_an_appropriate"
                 android:textColor="#2F414E"
                 android:textFontWeight="400"
                 android:textSize="16sp"

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="credit_score_details">Credit Score Details</string>
     <string name="_756">756</string>
@@ -21,12 +21,13 @@
     <string name="we_couldn_t_find_relevent_data">We couldn\'t find relevent data</string>
     <string name="please_come_back_again">please come back again</string>
     <string name="retry">Retry</string>
-    <string name="app_name2">Dr Credit</string>
+    <string name="app_name2">Dr. Credit</string>
     <string name="enter_the_otp">Enter the OTP</string>
     <string name="sent_to_91">Sent to +91</string>
     <string name="you_will_receive_an_otp_within">You will receive an OTP within</string>
     <string name="proceed">Proceed</string>
     <string name="checking_your_credit_score">Checking your credit score</string>
+    <string name="we_ll_use_it_to_find_you_an_aproriate">We\'ll use it to find you an aproriate</string>
     <string name="credit_limit">credit limit</string>
     <string name="we_will_use_this_to_find_your_credit_details">We\'ll use this to find your Credit Details</string>
     <string name="enter_pan_details">Enter PAN Details</string>

@@ -137,7 +137,7 @@
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="12dp"
                         android:maxLines="2"
-                        android:text="@string/get_important_messages_and_support_from_whatsapp_sms_and_call" />
+                        android:text="Get important messages and support from Whatsapp, SMS or Call" />
 
                 </LinearLayout>
                 <FrameLayout
