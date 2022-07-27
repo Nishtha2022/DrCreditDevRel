@@ -47,13 +47,7 @@ class User_details : AppCompatActivity() {
         binding.etAddress.addTextChangedListener(textWatcher)
         binding.etPincode.addTextChangedListener(textWatcher)
 
-        viewModel.pan = "BXGPA3911A"
-        viewModel.fullName = "Ayush"
-        viewModel.fatherName = "Shailendra Kumar Singh"
-        viewModel.dob = "19/09/1998"
 
-        viewModel.address = "Patna"
-        viewModel.pinCode = "800002"
 
         binding.btnConfirm.setOnClickListener(View.OnClickListener {
 
