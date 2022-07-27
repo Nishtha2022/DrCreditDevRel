@@ -48,8 +48,9 @@ class Credit_home_page : AppCompatActivity() {
             editor.putInt("progress", percent)
             editor.putBoolean("isLoggedIn", true)
             editor.apply()
-        } else {
-            val status = sharedpreferences.getInt("score", 602)
+        }
+        else {
+            val status = sharedpreferences.getInt("score", 666)
             scoreTv.text = status.toString()
             updateUi(status)
             var percent: Int = (((status - 300).toDouble() / 600) * 100).toInt()
@@ -61,7 +62,7 @@ class Credit_home_page : AppCompatActivity() {
             && intent.getStringExtra("year") != null
         ) {
 
-            date.text = intent.getStringExtra("day")
+            date.text = " "+intent.getStringExtra("day")
                 .toString() + " " + intent.getStringExtra("month") + "'" + intent.getStringExtra("year")
         } else {
             date.text = sharedpreferences.getString("day", "12")

@@ -44,6 +44,7 @@
     <string name="an_otp_will_be_sent_for_verification">An OTP will be sent for verification</string>
     <string name="_91">+91</string>
     <string name="get_important_messages_and_support_from_whatsapp_sms_and_call">Get important messages and support from Whatsapp, SMS or Call</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
     <string-array name="State">
         <item>Andhra Pradesh</item>
         <item>Arunachal Pradesh</item>

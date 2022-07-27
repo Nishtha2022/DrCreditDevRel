@@ -321,6 +321,7 @@ class Otp_verification : AppCompatActivity() {
             override fun onFinish() {
                 countTime.visibility = View.GONE
                 resendOtp.visibility = View.VISIBLE
+                binding.tvDidnt.text = "Didn’t receive an OTP?"
                 resendOtp.setTextColor(Color.parseColor("#229381"))
 
             }

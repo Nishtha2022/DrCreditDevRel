@@ -248,7 +248,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/resendOtp"
-                    android:text="Resend OTP"
+                    android:text="@string/resend_otp"
                     android:textColor="#229381"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="12dp"
