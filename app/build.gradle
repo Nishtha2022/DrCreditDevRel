@@ -23,15 +23,13 @@ android {
         prod{
             resValue "string", "app_name", "DrCredit"
             buildConfigField "String", "BASE_URL", "\"https://api.acecredit.in/\""
-            buildConfigField "String", "BINDING_NUMER", "\"9873042778\""
-            buildConfigField "String", "APP_ID", "\"1297575a140b134012cb8dcf57757921\""
+
         }
         dev{
             resValue "string", "app_name", "DrCredit dev"
             applicationIdSuffix ".dev"
             buildConfigField "String", "BASE_URL", "\"https://devapi.terrafin.tech:8090/\""
-            buildConfigField "String", "BINDING_NUMER", "\"9873042778\""
-            buildConfigField "String", "APP_ID", "\"82859b7b0bf105dc8ae5b596b95828\""
+
         }
     }
     compileOptions {
