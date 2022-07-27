@@ -10,8 +10,7 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".login.MainActivity">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/drCreditText"

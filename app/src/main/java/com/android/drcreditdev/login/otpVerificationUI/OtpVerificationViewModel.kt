@@ -1,0 +1,127 @@
+package com.android.drcreditdev.login.otpVerificationUI
+
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.android.drcreditdev.dataModal.dataUser
+import com.android.drcreditdev.dataModal.reqGenrateOtp
+import com.android.drcreditdev.dataModal.reqVerify
+import com.android.drcreditdev.dataModal.resVerify
+import com.android.drcreditdev.services.ApiClientReqOTP
+import com.android.drcreditdev.services.ApiClientUser
+import kotlinx.coroutines.launch
+import kotlin.collections.HashMap
+import kotlin.collections.set
+
+class OtpVerificationViewModel : ViewModel() {
+
+    var etText1: String? = null
+    var etText2: String? = null
+    var etText3: String? = null
+    var etText4: String? = null
+    var etText5: String? = null
+    var etText6: String? = null
+    var isVerified: MutableLiveData<Boolean> = MutableLiveData(false)
+    var setVerifyButton: MutableLiveData<Boolean> = MutableLiveData(false)
+    var resetOtp: MutableLiveData<Boolean> = MutableLiveData(false)
+    var intentInt: MutableLiveData<Int> = MutableLiveData()
+    lateinit var phone: String
+    var authToken: MutableLiveData<String> = MutableLiveData()
+
+
+    fun enableVerifyButton(): Boolean {
+        return if (!etText1.isNullOrEmpty()
+            && !etText2.isNullOrEmpty()
+            && !etText3.isNullOrEmpty()
+            && !etText4.isNullOrEmpty()
+            && !etText5.isNullOrEmpty()
+            && !etText6.isNullOrEmpty()
+        ) {
+            setVerifyButton.value = true
+
+            true
+        } else {
+            setVerifyButton.value = false
+            false
+        }
+
+    }
+
+    fun requestApi(code: String, phone: String) {
+        var number = "+91" + phone
+        var model: reqVerify = reqVerify(number, code.toInt(), "phone")
+        var response: MutableLiveData<resVerify> = MutableLiveData()
+
+        val reqOtp = ApiClientReqOTP().getApiService()
+        viewModelScope.launch {
+            val result = reqOtp.login(model)
+            if (result != null) {
+                if (result.isSuccessful) {
+                    //resetOtp.value=false
+                    //  setVerifyButton.value=
+                    response.value = result.body()
+                    authToken.value = result.body()!!.authToken
+                    checkUser(result.body()!!.authToken)
+
+                } else {
+                    resetOtp.value = true
+                }
+            } else {
+                resetOtp.value = true
+            }
+
+        }
+
+
+    }
+
+    fun callRepo(phone: String) {
+        var numberToSend = "+91" + phone
+        var modal: reqGenrateOtp = reqGenrateOtp(numberToSend, "fdsfsdfdssf", "phone")
+        val createPostApi = ApiClientReqOTP().getApiService()
+
+        viewModelScope.launch {
+            val result = createPostApi.createPost(modal)
+            if (result != null)
+            // Checking the results
+                if (result.code() == 200) {
+                    Log.d("msg: ", "Success")
+                } else {
+                }
+        }
+    }
+
+
+    private fun checkUser(authToken: String) {
+        var response: MutableLiveData<dataUser> = MutableLiveData()
+        val header = HashMap<String, String>()
+        header["authToken"] = authToken
+        header["Cookie"] = "JSESSIONID=17D464BCCAB458C440F98723E9F1F208"
+        var reqUserApi = ApiClientUser().getApiService()
+        viewModelScope.launch {
+            val response = reqUserApi.fetchUser(header)
+            if (response.body() != null) {
+                if (response.isSuccessful || response.code() == 200) {
+                    if (response.body()!!.pan == null || response.body()!!.fatherName == null || response.body()!!.dob == null) {
+                        intentInt.postValue(0)
+                        isVerified.value = false
+                    } else {
+                        intentInt.postValue(1)
+                        isVerified.value = true
+                    }
+                } else {
+                    intentInt.postValue(0)
+                    isVerified.value = false
+                }
+            } else {
+                intentInt.postValue(0)
+                isVerified.value = false
+            }
+
+
+        }
+
+
+    }
+}

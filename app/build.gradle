@@ -23,13 +23,11 @@ android {
         prod{
             resValue "string", "app_name", "DrCredit"
             buildConfigField "String", "BASE_URL", "\"https://api.acecredit.in/\""
-
         }
         dev{
             resValue "string", "app_name", "DrCredit dev"
             applicationIdSuffix ".dev"
             buildConfigField "String", "BASE_URL", "\"https://devapi.terrafin.tech:8090/\""
-
         }
     }
     compileOptions {

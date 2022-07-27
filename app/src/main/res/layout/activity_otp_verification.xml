@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".login.otpVerificationUI.Otp_verification">
+    >
     <data>
         <variable
             name="otpView"
-            type="com.example.drcreditdev.login.otpVerificationUI.OtpVerificationViewModel" />
+            type="com.android.drcreditdev.login.otpVerificationUI.OtpVerificationViewModel" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +88,6 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:enabled="true"
-
                     android:layout_marginTop="10dp"
                     android:cursorVisible="false"
                     android:imeOptions="actionNone"

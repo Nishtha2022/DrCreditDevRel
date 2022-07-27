@@ -7,7 +7,7 @@
    <data>
        <variable
            name="userNumber"
-           type="com.example.drcreditdev.login.userNumberUI.ViewForNumber"/>
+           type="com.android.drcreditdev.login.userNumberUI.ViewForNumber"/>
 
 
    </data>
@@ -29,6 +29,7 @@
                 android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
                 android:src="@drawable/arrow_back"
                 android:layout_margin="16dp"
                 ></ImageView>
@@ -137,7 +138,7 @@
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="12dp"
                         android:maxLines="2"
-                        android:text="Get important messages and support from Whatsapp, SMS or Call" />
+                        android:text="@string/get_important_messages_and_support_from_whatsapp_sms_and_call" />
 
                 </LinearLayout>
                 <FrameLayout

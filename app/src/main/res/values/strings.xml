@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <string name="credit_score_details">Credit Score Details</string>
     <string name="_756">756</string>
@@ -27,7 +27,7 @@
     <string name="you_will_receive_an_otp_within">You will receive an OTP within</string>
     <string name="proceed">Proceed</string>
     <string name="checking_your_credit_score">Checking your credit score</string>
-    <string name="we_ll_use_it_to_find_you_an_aproriate">We\'ll use it to find you an aproriate</string>
+    <string name="we_ll_use_it_to_find_you_an_aproriate">We\'ll use it to find you an appropriate</string>
     <string name="credit_limit">credit limit</string>
     <string name="we_will_use_this_to_find_your_credit_details">We\'ll use this to find your Credit Details</string>
     <string name="enter_pan_details">Enter PAN Details</string>
@@ -43,8 +43,7 @@
     <string name="enter_mobile_number">Enter mobile number</string>
     <string name="an_otp_will_be_sent_for_verification">An OTP will be sent for verification</string>
     <string name="_91">+91</string>
-    <string name="get_important_messages_and_support_from_whatsapp_sms_and_call">Get important messages and support from Whatsapp, SMS and Call</string>
-    <string name="we_ll_use_it_to_find_you_an_appropriate">We’ll use it to find you an appropriate</string>
+    <string name="get_important_messages_and_support_from_whatsapp_sms_and_call">Get important messages and support from Whatsapp, SMS or Call</string>
     <string-array name="State">
         <item>Andhra Pradesh</item>
         <item>Arunachal Pradesh</item>
